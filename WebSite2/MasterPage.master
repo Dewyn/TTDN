@@ -1,0 +1,114 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+<script runat="server">
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+</script>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="css/header.css" />
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+            
+        }
+        .auto-style2 {
+            height: 89px;
+        }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table class="auto-style1">
+            <tr>
+                <td colspan="3" id="color"= class="auto-style2">
+                    
+                    <img src="hinh_anh/logobook.png" style="height: 147px; width: 926px;"/>                
+                        <div id="right" style="margin-top:120px">
+                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" Visible="False" />
+                        <asp:Button runat="server" Text="Đăng Nhập" ID="adangnhap" OnClick="Unnamed1_Click" 
+                                Width="72px" />
+                        <asp:Button runat="server" Text="Đăng ký" ID="adangky" onclick="adangky_Click" 
+                                Width="77px" />
+                            <asp:Label ID="lbxinchao" runat="server"></asp:Label>
+                        <img src="hinh_anh/Giohang.gif" /><asp:Label runat="server" Text="cart"></asp:Label>
+                        <asp:Label runat="server" ID="Lable"></asp:Label>
+                        <asp:TextBox runat="server" ></asp:TextBox><asp:Button runat="server" Text="search" />
+                       
+                    </div>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="http://localhost:49801/WebSite2/trangchu.aspx"> Trang Chủ </a></li>
+                            <li><a href="http://localhost:49801/WebSite2/gioithieu.aspx"> Giới Thiệu</a></li>
+                            <li><a href="http://localhost:49801/WebSite2/sachmoi.aspx"> Sách Mới</a></li>
+                        
+                        </ul></div>
+
+                </td>
+                
+            </tr>
+            <tr>
+                <td width="230" align="left" id="color">
+                    <asp:DataList ID="DataList1" runat="server" DataKeyField="MaCD" 
+                        DataSourceID="SqlDataSource1">
+                        <ItemTemplate>
+                            <br />
+                            &nbsp;<asp:HyperLink ID="HyperLink1" runat="server" 
+                                NavigateUrl='<%# "~/sachtheochude.aspx?maCD="+Eval("maCD") %>' 
+                                Text='<%# Eval ("TenChuDe") %>'></asp:HyperLink>
+                            <br />
+                            <br />
+                        </ItemTemplate>
+                    </asp:DataList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:QLBanSachConnectionString %>" 
+                        SelectCommand="SELECT * FROM [CHUDE]"></asp:SqlDataSource>
+                    <br />
+                </td>
+                <td  align="center"><strong> <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder></strong></td>
+                <td width="276" id="right">&nbsp;
+                    
+                    <p>Sách bán chạy</p>
+                    <marquee direction="down" scrollamount="3" scrolldelay="30">
+                   
+                         
+                    
+                        
+                    <img src="hinh_anh/Image/ct1.jpg" /><br />
+                       
+                    <img src="hinh_anh/Image/kt1.jpg" /><br />
+                        
+                    <img src="hinh_anh/Image/pc1.jpg" /><br />
+                        
+                    <img src="hinh_anh/Image/lt1.jpg" /><br /></marquee>
+                          </td>
+            </tr>
+            <tr>
+                <td colspan="3"><footer>
+                    <p>nhà sách Bookstore địa chỉ 12/5 TP Thủ Dầu Một</p>
+                    <p>Copyright bookstore.VN © 2018</p>
+                    <p>Mọi thông tin đóng góp xin gửi về địa chỉ email book@edu.com.vn</p>
+                                </footer>
+
+                                </div></td>
+               
+            </tr>
+        </table>
+        <br /><br /><br /><br />
+       <br /><br /><br /><br />
+    </div>
+    </form>
+</body>
+</html>
